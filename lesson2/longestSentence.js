@@ -9,7 +9,10 @@ function longestSentence(text) {
     }
   });
 
-  console.log(longestSentence.join(' '));
+  let sentIndex = text.indexOf(longestSentence.join(' '));
+  let punctuation = text[sentIndex + longestSentence.join(' ').length];
+
+  console.log(longestSentence.join(' ') + punctuation);
   console.log (`The longest sentence has ${longestSentence.length} words.`);
   return longestSentence;
 }
@@ -42,6 +45,6 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
   ' -- that this nation, under God, shall have a new birth' +
   ' of freedom -- and that government of the people, by' +
   ' the people, for the people, shall not perish from the' +
-  ' earth.';
+  ' earth?';
 
 longestSentence(longText);
