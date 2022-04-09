@@ -1,8 +1,11 @@
 function longestSentence(text) {
-  let sentences = text.split(/[.!?]/);
-  let sentencesArray = sentences.map(sentence => sentence.trim().split(' '));
+  let sentences = text.trim().split(/[.!?]/);
+  let sentencesArray = sentences.map(sentence => sentence.trim().split(' ')).filter(sentence => {
+    return sentence.length > 1 || sentence[0].length > 0;
+  });
+
   let longestSentence = sentencesArray.reduce((longest, sentence) => {
-    if (longest.length > sentence.length) {
+    if (longest.length >= sentence.length) {
       return longest;
     } else {
       return sentence;
@@ -47,4 +50,7 @@ let longText = 'Four score and seven years ago our fathers brought forth' +
   ' the people, for the people, shall not perish from the' +
   ' earth?';
 
+shortText = 'Hello! Why? Goodbye.';
+
+longestSentence(shortText);
 longestSentence(longText);
